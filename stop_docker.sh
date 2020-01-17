@@ -1,0 +1,1 @@
+docker rm -f lorarequest:0.1
