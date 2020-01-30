@@ -1,1 +1,1 @@
-docker rm -f lorarequest:0.1
+docker rm -f ANTARES_REQUEST_MQTT

@@ -4,14 +4,15 @@ import dateutil.parser
 import paho.mqtt.client as mqtt
 import time
 
-# publish callback function
+# publish callback functi
 def on_publish(client, userdata, result):
     print("data published \n")
     pass
 
 def mqtt_publish(data):
     mqtt_topic = "environment_sensor"
-    mqtt_broker_ip = "34.87.119.216"
+    # mqtt_broker_ip = "34.87.119.216" #Production 
+    mqtt_broker_ip = "35.240.158.184" #Staging
     client = mqtt.Client()
     client.username_pw_set("jeager", password='Telkom123')                   
     client.connect(mqtt_broker_ip, 1883)
@@ -57,7 +58,7 @@ def parse_data(client_id,device_id,temperatur,kelembapan,time):
 
 while True:
     try:
-        for x in range(1, 3):
+        for x in range(1, 4):
             request(x)
             time.sleep(1)
     except :
