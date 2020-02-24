@@ -30,9 +30,9 @@ def request(x):
         "Accept": "application/json"
     }
     response = requests.get(BASE_URL, headers=headers)
-    convert_quotes = str(response.json()).replace("'",'"')
-    payload = json.loads(convert_quotes)
-    data = (payload['m2m:cin']['con']).split(",")
+    payload = json.loads(response.content)
+    jsondata = json.loads(payload['m2m:cin']['con'])
+    data = jsondata['data'].split(",")
     time = dateutil.parser.parse(payload['m2m:cin']['ct'])
     temp = data[0]
     hum = data[1]
@@ -58,7 +58,7 @@ def parse_data(client_id,device_id,temperatur,kelembapan,time):
 
 while True:
     try:
-        for x in range(1, 4):
+        for x in range(1, 2):
             request(x)
             time.sleep(1)
     except :
